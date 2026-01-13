@@ -20,10 +20,10 @@ const DiscountSection: React.FC = () => {
 
   // Define tiers without descriptions as requested
   const tiers = [
-    { range: "1 - 20 盒", discount: "9 折" },
-    { range: "20 - 50 盒", discount: "85 折" },
-    { range: "50 - 100 盒", discount: "82 折" },
-    { range: "100 盒以上", discount: "78 折" },
+    { range: "1 - 20 盒", discount: "9 折", price: "612元/盒" },
+    { range: "20 - 50 盒", discount: "85 折", price: "578元/盒" },
+    { range: "50 - 100 盒", discount: "82 折", price: "558元/盒" },
+    { range: "100 盒以上", discount: "78 折", price: "531元/盒" },
   ];
 
   // Helper to determine if a tier should be highlighted based on current quantity
@@ -39,7 +39,7 @@ const DiscountSection: React.FC = () => {
   return (
     <section className="py-24 px-4 bg-white text-center border-t border-gray-100">
       <div className="max-w-5xl mx-auto">
-        
+
         {/* 上方：即時計數器勳章 */}
         <div className="mb-16 inline-flex flex-col items-center">
           <div className="flex items-center gap-2 bg-stone-100 px-4 py-2 rounded-full mb-4">
@@ -71,29 +71,29 @@ const DiscountSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
           {tiers.map((tier, idx) => {
             const isActive = isTierActive(idx, totalQuantity);
-            
+
             return (
-              <div 
+              <div
                 key={idx}
-                className={`p-8 border transition-all duration-300 flex flex-col items-center justify-center ${
-                  isActive 
-                  ? 'border-black bg-black text-white scale-105 shadow-xl z-10' 
-                  : 'border-gray-100 bg-gray-50 text-black hover:border-gray-300'
-                }`}
+                className={`p-8 border transition-all duration-300 flex flex-col items-center justify-center ${isActive
+                    ? 'border-black bg-black text-white scale-105 shadow-xl z-10'
+                    : 'border-gray-100 bg-gray-50 text-black hover:border-gray-300'
+                  }`}
               >
                 <p className={`text-xs mb-4 tracking-widest ${isActive ? 'text-gray-400' : 'text-gray-500'}`}>
                   {tier.range}
                 </p>
                 <h3 className="text-4xl font-black mb-2">{tier.discount}</h3>
-                
+                <p className={`text-xl font-bold mb-1 ${isActive ? 'text-gray-200' : 'text-gray-900'}`}>{tier.price}</p>
+
                 {/* Active Status Label */}
                 <div className="h-6 flex items-center justify-center mt-2">
                   {isActive ? (
-                     <span className="text-xs font-bold tracking-wider text-yellow-400">
-                       目前達成折數
-                     </span>
+                    <span className="text-xs font-bold tracking-wider text-yellow-400">
+                      目前達成折數
+                    </span>
                   ) : (
-                     <span className="opacity-0 text-xs h-4 block"></span>
+                    <span className="opacity-0 text-xs h-4 block"></span>
                   )}
                 </div>
               </div>
@@ -115,7 +115,7 @@ const DiscountSection: React.FC = () => {
 
         {/* CTA 按鈕 */}
         <div className="relative inline-block group">
-          <a 
+          <a
             href={BOOKING_FORM_LINK}
             target="_blank"
             rel="noopener noreferrer"
