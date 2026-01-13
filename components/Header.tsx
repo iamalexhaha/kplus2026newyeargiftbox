@@ -17,22 +17,21 @@ const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
   }, []);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${
-        isScrolled ? 'shadow-sm py-3 md:py-4' : 'py-4 md:py-6'
-      }`}
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${isScrolled ? 'shadow-sm py-3 md:py-4' : 'py-4 md:py-6'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 lg:px-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0">
           <div className="flex items-center">
-            <button 
+            <button
               onClick={() => onNavigate('home')}
               className="text-base md:text-xl font-bold tracking-tight text-black hover:opacity-70 transition-opacity text-center md:text-left"
             >
-              KPLUS林口門市新年禮盒團購
+              CAFEINKPLUS 2026 NEW YEAR GIFT BOX
             </button>
           </div>
-          
+
           <nav className="flex gap-6 md:gap-8">
             <button
               onClick={() => onNavigate('home')}
